@@ -20,8 +20,14 @@ function searchLocation() {
           map.removeLayer(marker);
         }
 
-        marker = L.marker([lat, lon]).addTo(map)
-          .bindPopup(`<b>${query}</b>`).openPopup();
+        const displayName = data[0].display_name;
+
+marker = L.marker([lat, lon]).addTo(map)
+  .bindPopup(`<b>${query}</b><br>${displayName}`).openPopup();
+
+// Show comment below the map too
+document.getElementById('commentBox').innerText = `📍 ${displayName}`;
+
 
         map.setView([lat, lon], 13);
       } else {
